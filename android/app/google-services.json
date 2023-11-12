@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "545197728865",
+    "project_id": "myprofile-greendee",
+    "storage_bucket": "myprofile-greendee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545197728865:android:1b7d9d67b5694ecac97620",
+        "android_client_info": {
+          "package_name": "com.example.myprofile_greendee"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvDcgJMYLwNEnkOvRYP2F3Ur3AtSROjn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

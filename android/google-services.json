@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "545197728865",
+    "project_id": "myprofile-greendee",
+    "storage_bucket": "myprofile-greendee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545197728865:android:1b7d9d67b5694ecac97620",
+        "android_client_info": {
+          "package_name": "com.example.myprofile_greendee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545197728865-8ufr8op72epgr4sqpi7dc6196q54df4v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvDcgJMYLwNEnkOvRYP2F3Ur3AtSROjn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545197728865-8ufr8op72epgr4sqpi7dc6196q54df4v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "545197728865-j69sv2i0jeqjee7jhp0qmhd6cih6ns3i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myprofileGreendee"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
