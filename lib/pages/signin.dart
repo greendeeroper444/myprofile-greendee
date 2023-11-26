@@ -24,7 +24,7 @@ class _SigninState extends State<Signin> {
   final TextEditingController passwordController = TextEditingController();
 
   //signin method
-  void signin () async{
+  void signinUser () async{
     //show laoding circle
     showDialog(context: context,
         builder: (context) => const Center(
@@ -117,7 +117,7 @@ class _SigninState extends State<Signin> {
               //Sign in button
               MyButton(
                 text: "Sign in",
-                onTap: signin,
+                onTap: signinUser,
               ),
               const SizedBox(height: 20),
 
@@ -150,23 +150,17 @@ class _SigninState extends State<Signin> {
                   GoogleAndFacebook(
                     onTap: () => signInWithGoogle(),
                     imagePath: 'lib/images/google.png',
-                    title: 'Sign in with Google', onPressed: () {
-                    signInWithGoogle();
-                  },
+                    title: 'Sign in with Google',
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   // Facebook button
                   GoogleAndFacebook(
-                    onTap: (){},
+                    onTap: () {},
                     imagePath: 'lib/images/facebook.png',
                     title: 'Sign in with Facebook',
-                    onPressed: () {
-                      signInWithGoogle(); // Call the function from auth_service.dart
-                    },
                   ),
                 ],
               ),
-
 
               const SizedBox(height: 20,),
 

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,15 +18,13 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  //text controller
+
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmController = TextEditingController();
 
-  //login method
   void signupUser() async{
-    //show laoding circle
     showDialog(
         context: context,
         builder: (context) => const Center(
@@ -33,9 +32,7 @@ class _SignupState extends State<Signup> {
         )
     );
 
-    //make sure passwords match
     if(passwordController.text != confirmController.text){
-      //pop loading circle
       Navigator.pop(context);
       displayMessageToUser("Password don't match", context);
     }
@@ -48,13 +45,28 @@ class _SignupState extends State<Signup> {
             password: passwordController.text
         );
 
+        //create user document and add to firestore
+        createUserDocument(userCredential);
+
         if(context.mounted) Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
         Navigator.pop(context);
         displayMessageToUser(e.code, context);
       }
     }
-    //
+  }
+
+  //create user document and collect them in firestore
+  Future<void> createUserDocument(UserCredential? userCredential) async{
+    if(userCredential != null && userCredential.user != null){
+      await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(userCredential.user!.email)
+          .set({
+        'email': userCredential.user!.email,
+        'username': usernameController.text
+      });
+    }
   }
 
 

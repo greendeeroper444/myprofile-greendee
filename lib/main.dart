@@ -3,29 +3,38 @@ import 'package:flutter/material.dart';
 import 'package:myprofile_greendee/auth/auth.dart';
 import 'package:myprofile_greendee/pages/home.dart';
 import 'package:myprofile_greendee/pages/profile.dart';
-import 'package:myprofile_greendee/pages/signin.dart';
+import 'package:myprofile_greendee/pages/welcome.dart';
 
 import 'auth/signin_or_signup.dart';
 import 'firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const Auth(),
+      home: const WelcomePage(),
       routes: {
-        '/signin_signup_page':(context) => const SigninOrSignup(),
-        '/home_page':(context) => Home(),
-        // '/profile_page':(context) => ProfilePage(),
+        '/signin_signup_page': (context) => const SigninOrSignup(),
+        '/home_page': (context) => const Home(),
+        '/profile_page':(context) => ProfilePage(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/auth') {
+          return MaterialPageRoute(
+            builder: (context) => const Auth(),
+            settings: settings,
+          );
+        }
+        return null;
       },
     );
   }

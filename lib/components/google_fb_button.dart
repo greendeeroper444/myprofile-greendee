@@ -5,14 +5,12 @@ class GoogleAndFacebook extends StatelessWidget {
   final String imagePath;
   final String title;
   final Function()? onTap;
-  final VoidCallback onPressed;
 
   const GoogleAndFacebook({
     super.key,
     required this.imagePath,
     required this.title,
     required this.onTap,
-    required this.onPressed
   });
 
   @override
@@ -35,7 +33,7 @@ class GoogleAndFacebook extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Text(
-              '$title',
+              title,
               style: const TextStyle(
                 fontSize: 16,
               ),

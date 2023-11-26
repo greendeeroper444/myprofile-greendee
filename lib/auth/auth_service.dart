@@ -1,50 +1,53 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-final GoogleSignIn googleSignIn = GoogleSignIn();
-
-Future<void> signInWithGoogle() async {
+Future<UserCredential> signInWithGoogle() async {
   try {
-    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
-    final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount!.authentication;
 
-    final AuthCredential credential = GoogleAuthProvider.credential(
-      accessToken: googleSignInAuthentication.accessToken,
-      idToken: googleSignInAuthentication.idToken,
+    await GoogleSignIn().signOut();
+
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    if (googleUser == null) {
+
+      return Future.error("Sign in canceled by user");
+    }
+
+    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
     );
 
-    final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
-    final User? user = userCredential.user;
 
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   } catch (e) {
-    print(e.toString());
+    print("Error signing in with Google: $e");
+    return Future.error("Sign in failed");
   }
 }
 
+class AuthService {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
+  Widget getProfileImage() {
+    if (_firebaseAuth.currentUser?.photoURL != null) {
+      return ClipOval(
+        child: Image.network(
+          _firebaseAuth.currentUser!.photoURL!,
+          height: 100,
+          width: 100,
+        ),
+      );
+    } else {
+      return const ClipOval(
+        child: Icon(Icons.account_circle, size: 100),
+      );
+    }
+  }
+}
 
-
-
-
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:google_sign_in/google_sign_in.dart';
-//
-// class AuthService{
-//   //sign in google
-//   signInWithGoogle() async{
-//
-//     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-//
-//     final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
-//
-//     final credential = GoogleAuthProvider.credential(
-//       accessToken: googleAuth.accessToken,
-//       idToken: googleAuth.idToken
-//     );
-//
-//     return await FirebaseAuth.instance.signInWithCredential(credential);
-//
-//   }
-// }
 
 
