@@ -25,13 +25,12 @@ class _SigninState extends State<Signin> {
 
   //signin method
   void signinUser () async{
-    //show laoding circle
+
     showDialog(context: context,
         builder: (context) => const Center(
           child: CircularProgressIndicator(),
         ));
 
-    //try sign in
     try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text,
