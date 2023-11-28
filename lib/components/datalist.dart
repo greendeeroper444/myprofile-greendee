@@ -43,6 +43,8 @@ class _DataListState extends State<DataList> {
         children: [
           SingleChildScrollView(
             child: DataTable(
+              columnSpacing: 30,
+              dataRowHeight: 100,
               columns: const [
                 DataColumn(label: Text('Account')),
                 DataColumn(label: Text('Password')),
