@@ -34,7 +34,7 @@ class Home extends StatelessWidget {
 
             Center(
               child: Text(
-                'You can visit your profile and enjoy its pocket',
+                'You can visit your profile and enjoy the pocket',
                 style: TextStyle(
                   fontSize: 15,
                   fontStyle: FontStyle.italic,
