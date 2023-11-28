@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const WelcomePage(),
       routes: {
-        '/signin_signup_page': (context) => const SigninOrSignup(),
-        '/home_page': (context) => const Home(),
-        '/profile_page':(context) => ProfilePage(),
+        '/signin_signup': (context) => const SigninOrSignup(),
+        '/home': (context) => const Home(),
+        '/profile':(context) => ProfilePage(),
       },
       onGenerateRoute: (settings) {
         if (settings.name == '/auth') {

@@ -50,7 +50,7 @@ class MyDrawer extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
 
-                    Navigator.pushNamed(context, '/profile_page');
+                    Navigator.pushNamed(context, '/profile');
                   },
                 ),
               ),
