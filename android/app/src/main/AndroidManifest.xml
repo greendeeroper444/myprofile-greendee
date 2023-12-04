@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="myprofile_greendee"
+        android:label="G World"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

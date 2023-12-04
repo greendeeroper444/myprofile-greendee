@@ -222,7 +222,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 return const Center(
                                   child: Padding(
                                     padding: EdgeInsets.all(25),
-                                    child: Text("No posts..please post something!"),
+                                    child: Text("No data, you can add your data!"),
                                   ),
                                 );
                               }
